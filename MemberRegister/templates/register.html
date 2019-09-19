@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+	<div class="row clearfix">
+		<div class="col-md-12 column">
+			<h3 class="text-center">
+				注册信息填写
+			</h3>
+		</div>
+	</div>
+	<div class="row clearfix">
+		<div class="col-md-12 column">
+			<form role="form" action="{{ url_for("register_page") }}" method="post">
+				<div class="form-group">
+					 <label for="exampleInputEmail1">姓名</label><input name="member_name" type="text" class="form-control" id="exampleInputEmail1" required="required" />
+				</div>
+				<div class="form-group">
+					 <label for="exampleInputPassword1">学号</label><input name="member_id" type="text" class="form-control" id="exampleInputPassword1" required="required"/>
+				</div>
+                <div class="form-group">
+					 <label for="exampleInputPassword1">性别</label>
+                     <select required="required" name="member_sex" class="form-control">
+                         <option value="男">男</option>
+                         <option value="女">女</option>
+                     </select>
+				</div>
+                <div class="form-group">
+					 <label for="exampleInputEmail1">学院</label><input name="member_college" type="text" class="form-control" id="exampleInputEmail1" required="required" />
+				</div>
+                <div class="form-group">
+					 <label for="exampleInputEmail1">微信</label><input name="member_WeChat" type="text" class="form-control" id="exampleInputEmail1"  />
+				</div>
+                <div class="form-group">
+					 <label for="exampleInputEmail1">QQ</label><input name="member_QQ" type="text" class="form-control" id="exampleInputEmail1"/>
+				</div>
+                <div class="form-group">
+					 <label for="exampleInputEmail1">电话</label><input name="member_telephone" type="text" class="form-control" id="exampleInputEmail1" required="required" />
+				</div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">政治面貌</label>
+                    <select name="member_political_status" required="required" class="form-control">
+                        <option value="群众">群众</option>
+                        <option value="少先队员">少先队员</option>
+                        <option value="共青团员">共青团员</option>
+                        <option value="中共预备党员">中共预备党员</option>
+                        <option value="中共党员">中共党员</option>
+                        <option value="其他民主党派人士">其他民主党派人士</option>
+                    </select>
+				</div>
+                <div class="form-group">
+					 <label for="exampleInputEmail1">电子邮箱</label><input name="member_email" type="email" class="form-control" id="exampleInputEmail1" required="required" />
+				</div>
+                <div class="form-group">
+					 <label for="exampleInputEmail1">生日（请按YYYY-MM-DD格式填写）</label><input name="member_birthday" type="text" class="form-control" id="exampleInputEmail1" required="required" />
+				</div>
+				 <button type="submit" class="btn btn-default">完成填写，提交！</button>
+			</form>
+		</div>
+	</div>
+</div>
+{% endblock %}

@@ -1,0 +1,33 @@
+from flask import render_template, request, flash
+
+from .. import db, app
+from ..model import Member
+
+import time
+
+@app.route("/register", methods=['POST', 'GET'])
+def register_page():
+    if request.method == 'GET':
+        return render_template("register.html")
+    else:
+        member_name = request.form['member_name']
+        member_id = request.form['member_id']
+        member_sex = request.form['member_sex']
+        member_college = request.form['member_college']
+        member_WeChat = request.form['member_WeChat']
+        member_QQ = request.form['member_QQ']
+        member_telephone = request.form['member_telephone']
+        member_political_status = request.form['member_political_status']
+        member_email = request.form['member_email']
+        member_birthday = request.form['member_birthday']
+        new_member = Member.query.filter(Member.member_id == member_id).first()
+
+        if new_member is None:
+            member = Member(member_name, member_id, member_sex, member_college, member_WeChat,
+                            member_QQ, member_telephone, member_political_status, member_email,
+                            member_birthday)
+            db.session.add(member)
+            db.session.commit()
+            flash("注册成功，欢迎加入军事爱好者协会")
+            time.sleep(5)
+            return render_template("index.html")
