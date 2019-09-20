@@ -8,10 +8,7 @@
 			</h3>
 
 			<p class="text-center">
-                {% if msg %}
-                { msg }
-                {% endif %}
-                <strong>已报名 {{ count }}人 </strong>>
+                <strong>已报名 {{ count }}人 </strong>
 			</p>
 			<table class="table table-bordered">
 				<thead>
@@ -34,30 +31,55 @@
                         <th>
                             政治面貌
                         </th>
+                        <th>
+                            微信
+                        </th>
+                        <th>
+                            QQ
+                        </th>
+                        <th>
+                            电子邮件
+                        </th>
+                        <th>
+                            生日
+                        </th>
 					</tr>
 				</thead>
 				<tbody>
                 {% for i in list %}
 					<tr>
 						<td>
-							 {{ i[1] }}
+							 {{ i.student_id }}
 						</td>
 						<td>
-							 {{ i[2] }}
+							 {{ i.member_sex }}
 						</td>
 						<td>
-                             {{ i[3] }}
+                             {{ i.member_name }}
 						</td>
 						<td>
-							 {{ i[4] }}
+							 {{ i.member_college }}
 						</td>
                         <td>
-                             {{ i[7] }}
+                             {{ i.member_telephone }}
                         </td>
                         <td>
-                             {{ i[8] }}
+                             {{ i.member_political_status }}
+                        </td>
+                        <td>
+                            {{ i.member_WeChat }}
+                        </td>
+                        <td>
+                            {{ i.member_QQ }}
+                        </td>
+                        <td>
+                            {{ i.member_email }}
+                        </td>
+                        <td>
+                            {{ i.member_birthday }}
                         </td>
 					</tr>
+
                 {% endfor %}
 				</tbody>
 			</table>
