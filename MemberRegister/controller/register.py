@@ -4,15 +4,13 @@ from .. import db, app
 from ..model import Member
 
 
-import time
-
 @app.route("/register", methods=['POST', 'GET'])
 def register_page():
     if request.method == 'GET':
         return render_template("register.html")
     else:
         member_name = request.form['member_name']
-        member_id = request.form['member_id']
+        student_id = request.form['student_id']
         member_sex = request.form['member_sex']
         member_college = request.form['member_college']
         member_WeChat = request.form['member_WeChat']
@@ -21,10 +19,10 @@ def register_page():
         member_political_status = request.form['member_political_status']
         member_email = request.form['member_email']
         member_birthday = request.form['member_birthday']
-        new_member = Member.query.filter(Member.member_id == member_id).first()
+        new_member = Member.query.filter(Member.student_id == student_id).first()
 
         if new_member is None:
-            member = Member(member_name, str(member_id), member_sex, member_college, member_WeChat,
+            member = Member(member_name, str(student_id), member_sex, member_college, member_WeChat,
                             str(member_QQ), str(member_telephone), member_political_status, member_email,
                             member_birthday)
             db.session.add(member)
