@@ -54,8 +54,16 @@
 		</div>
 	</div>
 </div>
-			<div class="alert alert-success alert-dismissable">
+        <div>
+            <div class="page-header">
+				<h1>
+					新人注册入口
+				</h1>
+            </div>
+        </div>
+            <div class="alert alert-success alert-dismissable">
 				 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+
 				<h4>
                     {% with messages = get_flashed_messages() %}
                 {% if messages %}
@@ -72,6 +80,26 @@
 
 
 			</div>
+        <div class="container">
+	<div class="row clearfix">
+		<div class="col-md-12 column">
+			<div class="page-header">
+				<h1>
+					鹳狸猿入口
+				</h1>
+			</div>
+			<div class="alert alert-success alert-dismissable">
+				 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+				<h4>
+					管理面板入口
+				</h4>
+                <strong>添加已付款社员入口</strong>  <a href="{{ url_for("add_paid_page") }}" class="alert-link">添加已付款社员</a>
+                <strong>社员注册数统计入口</strong> <a href="{{ url_for("statistics_page") }}" class="alert-link">社员统计</a>
+                <strong>退出狗管理权限</strong> <a href="{{ url_for("logout_page") }}" class="alert-link">登出管理员权限</a>
+			</div>
+		</div>
+	</div>
+</div>
 		</div>
 	</div>
 </div>
