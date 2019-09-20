@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class="container">
+	<div class="row clearfix">
+		<div class="col-md-12 column">
+			<h3 class="text-center">
+				已报名社员人数统计
+			</h3>
+			<p class="text-center">
+                <strong>已报名 {{ count }}人 </strong>>
+			</p>
+			<table class="table table-bordered">
+				<thead>
+					<tr>
+						<th>
+							学号
+						</th>
+						<th>
+							性别
+						</th>
+						<th>
+                            姓名
+						</th>
+						<th>
+							学院
+						</th>
+                        <th>
+                            联系方式
+                        </th>
+                        <th>
+                            政治面貌
+                        </th>
+					</tr>
+				</thead>
+				<tbody>
+                {% for i in list %}
+					<tr>
+						<td>
+							 {{ i[1] }}
+						</td>
+						<td>
+							 {{ i[2] }}
+						</td>
+						<td>
+                             {{ i[3] }}
+						</td>
+						<td>
+							 {{ i[4] }}
+						</td>
+                        <td>
+                             {{ i[7] }}
+                        </td>
+                        <td>
+                             {{ i[8] }}
+                        </td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+{% endblock %}

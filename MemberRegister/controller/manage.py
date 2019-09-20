@@ -22,3 +22,9 @@ def add_paid_page():
     return render_template("add_paid.html", msg="学号:"+student_id+"已经存在！")
 
 
+@app.route('/statistics')
+@login_required
+def statistics_page():
+    count = Member.query.all().count()
+    list = Member.query.all()
+    return render_template("reporter.html", count=count, list=list)
