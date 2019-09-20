@@ -25,6 +25,8 @@ def add_paid_page():
 @app.route('/statistics')
 @login_required
 def statistics_page():
-    count = Member.query.all().count()
-    list = Member.query.all()
-    return render_template("reporter.html", count=count, list=list)
+    count = Member.query.count()
+    member_list = Member.query.all()
+    # if list is None:
+    #     return render_template("reporter.html", msg="没有数据", count=count)
+    return render_template("reporter.html", count=count, list=member_list)

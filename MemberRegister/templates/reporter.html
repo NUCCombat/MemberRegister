@@ -6,7 +6,11 @@
 			<h3 class="text-center">
 				已报名社员人数统计
 			</h3>
+
 			<p class="text-center">
+                {% if msg %}
+                { msg }
+                {% endif %}
                 <strong>已报名 {{ count }}人 </strong>>
 			</p>
 			<table class="table table-bordered">
@@ -54,6 +58,7 @@
                              {{ i[8] }}
                         </td>
 					</tr>
+                {% endfor %}
 				</tbody>
 			</table>
 		</div>
