@@ -3,8 +3,8 @@ from .. import db
 
 class Member(db.Model):
     __tablename__ = 'member'
-    uid = db.Column(db.Integer, autoincrement=True, default=1, nullable=False)
-    member_id = db.Column(db.String(10), primary_key=True, nullable=False)
+    uid = db.Column(db.Integer, primary_key=True, autoincrement=True, nullable=False)
+    member_id = db.Column(db.String(10), nullable=False)
     member_sex = db.Column(db.String(2), nullable=False)
     member_name = db.Column(db.String(8), nullable=False)
     member_college = db.Column(db.String(20), nullable=False)

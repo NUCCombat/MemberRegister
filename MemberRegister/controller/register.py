@@ -1,7 +1,8 @@
-from flask import render_template, request, flash
+from flask import render_template, request, flash, redirect, url_for
 
 from .. import db, app
 from ..model import Member
+
 
 import time
 
@@ -23,11 +24,13 @@ def register_page():
         new_member = Member.query.filter(Member.member_id == member_id).first()
 
         if new_member is None:
-            member = Member(member_name, member_id, member_sex, member_college, member_WeChat,
-                            member_QQ, member_telephone, member_political_status, member_email,
+            member = Member(member_name, str(member_id), member_sex, member_college, member_WeChat,
+                            str(member_QQ), str(member_telephone), member_political_status, member_email,
                             member_birthday)
             db.session.add(member)
             db.session.commit()
-            flash("注册成功，欢迎加入军事爱好者协会")
-            time.sleep(5)
-            return render_template("index.html")
+            flash(member_name + "恭喜，注册成功，欢迎加入军事爱好者协会")
+            return redirect(url_for('page_index'))
+        else:
+            flash("学号已经注册!", )
+            return redirect(url_for('register_page'))

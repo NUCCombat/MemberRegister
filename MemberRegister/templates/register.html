@@ -1,5 +1,23 @@
 {% extends "base.html" %}
 {% block content %}
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <div class="container">
+	<div class="row clearfix">
+		<div class="col-md-12 column">
+			<h4 class="text-center text-error">
+
+                    <ul class=flashes>
+                        {% for message in messages %}
+                        {{ message }}
+                        {% endfor %}
+                    </ul>
+			</h4>
+		</div>
+	</div>
+</div>
+    {% endif %}
+    {% endwith %}
 <div class="container">
 	<div class="row clearfix">
 		<div class="col-md-12 column">
@@ -12,10 +30,10 @@
 		<div class="col-md-12 column">
 			<form role="form" action="{{ url_for("register_page") }}" method="post">
 				<div class="form-group">
-					 <label for="exampleInputEmail1">姓名</label><input name="member_name" type="text" class="form-control" id="exampleInputEmail1" required="required" />
+					 <label for="exampleInputEmail1">姓名</label><input name="member_name" type="text" class="form-control" id="exampleInputEmail1" required="required" maxlength="8" onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')"/>
 				</div>
 				<div class="form-group">
-					 <label for="exampleInputPassword1">学号</label><input name="member_id" type="text" class="form-control" id="exampleInputPassword1" required="required"/>
+					 <label for="exampleInputPassword1">学号</label><input name="member_id" type="text" onkeyup="value=value.replace(/[^\d]/g,'')" class="form-control" id="exampleInputPassword1" required="required" minlength="10" maxlength="10" />
 				</div>
                 <div class="form-group">
 					 <label for="exampleInputPassword1">性别</label>
@@ -24,38 +42,66 @@
                          <option value="女">女</option>
                      </select>
 				</div>
-                <div class="form-group">
-					 <label for="exampleInputEmail1">学院</label><input name="member_college" type="text" class="form-control" id="exampleInputEmail1" required="required" />
+                <div class="form-group" >
+					 <label for="exampleInputEmail1">学院</label>
+                    <select name="member_college" class="form-control">
+                        <option value="机电工程学院">机电工程学院</option>
+                        <option value="机械工程学院">机械工程学院</option>
+                        <option value="材料科学与工程学院">材料科学与工程学院</option>
+                        <option value="化学工程与技术学院">化学工程与技术学院</option>
+                        <option value="信息与通讯工程学院">信息与通信工程学院</option>
+                        <option value="仪器与电子学院">仪器与电子学院</option>
+                        <option value="大数据学院">大数据学院</option>
+                        <option value="理学院">理学院</option>
+                        <option value="经济与管理学院">经济与管理学院</option>
+                        <option value="人文社会科学学院">人文社会科学学院</option>
+                        <option value="体育学院">体育学院</option>
+                        <option value="艺术学院">艺术学院</option>
+                        <option value="软件学院">软件学院</option>
+                        <option value="环境与安全工程学院">环境与安全工程学院</option>
+                        <option value="电气与控制工程学院">电气与控制工程学院</option>
+                        <option value="能源动力工程学院">能源动力工程学院</option>
+                        <option value="马克思主义学院">马克思主义学院</option>
+                    </select>
 				</div>
                 <div class="form-group">
-					 <label for="exampleInputEmail1">微信</label><input name="member_WeChat" type="text" class="form-control" id="exampleInputEmail1"  />
+					 <label for="exampleInputEmail1">微信</label><input name="member_WeChat" type="text" class="form-control" id="exampleInputEmail1"  maxlength="64"/>
 				</div>
                 <div class="form-group">
-					 <label for="exampleInputEmail1">QQ</label><input name="member_QQ" type="text" class="form-control" id="exampleInputEmail1"/>
+					 <label for="exampleInputEmail1">QQ</label><input name="member_QQ" type="text" onkeyup="value=value.replace(/[^\d]/g,'')" class="form-control" id="exampleInputEmail1" maxlength="12" />
 				</div>
                 <div class="form-group">
-					 <label for="exampleInputEmail1">电话</label><input name="member_telephone" type="text" class="form-control" id="exampleInputEmail1" required="required" />
+					 <label for="exampleInputEmail1">电话</label><input name="member_telephone" type="text" onkeyup="value=value.replace(/[^\d]/g,'')" class="form-control" id="exampleInputEmail1" required="required"  minlength="11" maxlength="13"/>
 				</div>
                 <div class="form-group">
                     <label for="exampleInputEmail1">政治面貌</label>
                     <select name="member_political_status" required="required" class="form-control">
                         <option value="群众">群众</option>
-                        <option value="少先队员">少先队员</option>
+                        <option value="无党派人士">无党派人士</option>
                         <option value="共青团员">共青团员</option>
                         <option value="中共预备党员">中共预备党员</option>
                         <option value="中共党员">中共党员</option>
-                        <option value="其他民主党派人士">其他民主党派人士</option>
+                        <option value="民革党员">民革党员</option>
+                        <option value="民盟盟员">民盟盟员</option>
+                        <option value="民建会员">民建会员</option>
+                        <option value="民进会员">民进会员</option>
+                        <option value="农工党党员">农工党党员</option>
+                        <option value="致公党党员">致公党党员</option>
+                        <option value="九三学社社员">九三学社社员</option>
+                        <option value="台盟盟员">台盟盟员</option>
                     </select>
 				</div>
                 <div class="form-group">
 					 <label for="exampleInputEmail1">电子邮箱</label><input name="member_email" type="email" class="form-control" id="exampleInputEmail1" required="required" />
 				</div>
                 <div class="form-group">
-					 <label for="exampleInputEmail1">生日（请按YYYY-MM-DD格式填写）</label><input name="member_birthday" type="text" class="form-control" id="exampleInputEmail1" required="required" />
+					 <label for="exampleInputEmail1">生日</label>
+                    <input name="member_birthday" type="date" class="form-control" id="exampleInputEmail1" required="required" />
 				</div>
 				 <button type="submit" class="btn btn-default">完成填写，提交！</button>
 			</form>
 		</div>
 	</div>
 </div>
+
 {% endblock %}

@@ -14,10 +14,10 @@
 				</ol>
 				<div class="carousel-inner">
 					<div class="item active">
-						<img alt="" src="v3/default.jpg" />
+						<img alt="" src="https://nuccombat.cn/images/2019/05/29/DSCF3584.jpg" />
 						<div class="carousel-caption">
 							<h4>
-								First Thumbnail label
+
 							</h4>
 							<p>
 								Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
@@ -51,8 +51,20 @@
 			<div class="alert alert-success alert-dismissable">
 				 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
 				<h4>
+                    {% with messages = get_flashed_messages() %}
+                {% if messages %}
+
+                    <ul class=flashes>
+                        {% for message in messages %}
+                        {{ message }}
+                        {% endfor %}
+                    </ul>
+                                {% endif %}
+                    {% endwith %}
 					立即注册！
 				</h4>  点击此处完成注册 <a href= "{{ url_for('register_page') }}" class="alert-link">点我注册</a>
+
+
 			</div>
 		</div>
 	</div>
