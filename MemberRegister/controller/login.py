@@ -8,6 +8,8 @@ from ..model import Admin
 @app.route("/login", methods=['POST', 'GET'])
 def login_page():
     if request.method == 'GET':
+        if is_auth_in():
+            return redirect(url_for("add_paid_page"))
         return render_template("login.html")
 
     username = request.form['username']
@@ -21,7 +23,7 @@ def login_page():
         return render_template("login.html", msg="密码错误")
 
     auth_in(admin)
-    return redirect("/")
+    return redirect(url_for("add_paid_page"))
 
 
 @app.route("/logout")
