@@ -2,4 +2,4 @@ DEBUG = True
 SECRET_KEY = '1145141919810da21!@#QWDA#'
 
 SQLALCHEMY_TRACK_MODIFICATIONS = False
-SQLALCHEMY_DATABASE_URI = r"mysql+pymysql://MemberRegister:dwXhyi64XHCXT8H5@47.93.242.157:3306/MemberRegister?charset=utf8mb4"
+SQLALCHEMY_DATABASE_URI = r"mysql+pymysql://MemberRegister:dwXhyi64XHCXT8H5@127.0.0.1:3306/MemberRegister?charset=utf8mb4"
